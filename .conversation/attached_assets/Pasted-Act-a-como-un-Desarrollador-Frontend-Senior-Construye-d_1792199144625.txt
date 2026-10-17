@@ -1,0 +1,60 @@
+Actúa como un Desarrollador Frontend Senior. Construye de inicio a fin en una sola pasada un Producto Mínimo Viable (PMV) completo, funcional y listo para compilar con React, Vite y Tailwind CSS.
+
+### REGLAS OBLIGATORIAS DE ARQUITECTURA (CERO COMPLEJIDAD / COMPATIBILIDAD NETLIFY)
+1. ESTRUCTURA PLANA EN LA RAÍZ:
+   - Todo el proyecto debe residir en la raíz (/): index.html, package.json, vite.config.js, tailwind.config.js y la carpeta /src.
+   - PROHIBIDO usar monorepos, pnpm-workspaces, catálogos ("catalog:"), alias "workspace:*" o subcarpetas tipo "artifacts/".
+   - PROHIBIDO instalar plugins específicos de Replit (@replit/vite-plugin-*).
+
+2. DEPENDENCIAS ESTÁNDARES EXACTAS (package.json):
+   Usa exclusivamente estas dependencias con versiones estándar de npm:
+   - "react": "^18.2.0"
+   - "react-dom": "^18.2.0"
+   - "lucide-react": "^0.360.0"
+   - "mermaid": "^10.9.0"
+   En devDependencies: "vite": "^5.2.0", "@vitejs/plugin-react": "^4.2.1", "tailwindcss": "^3.4.1", "postcss": "^8.4.35", "autoprefixer": "^10.4.18".
+
+3. CONFIGURACIONES BASE:
+   - vite.config.js:
+     import { defineConfig } from 'vite';
+     import react from '@vitejs/plugin-react';
+     export default defineConfig({
+       plugins: [react()],
+       base: './'
+     });
+   - package.json scripts:
+     "scripts": {
+       "dev": "vite",
+       "build": "vite build",
+       "preview": "vite preview"
+     }
+
+---
+
+### IDENTIDAD, DISEÑO Y FUNCIONALIDAD DEL PMV:
+- Aplicación: "FlowSOP AI — Sistema Inteligente de Estandarización de Procesos y Agente Operativo"
+- Autora: Donnatty Durán (Reto Migrantes Libres)
+- Paleta Corporativa:
+  * Primario: Morado corporativo profundo (#581C87)
+  * Resaltes/Acciones: Fucsia / Magneto sobrio (#A21CAF / #BE185D)
+  * Fondos de insignias y chips: Lavanda pastel (#F3E8FF)
+  * Superficies: Blanco puro (#FFFFFF) con bordes slate-200 (#E2E8F0) y fondo general slate-50 (#F8FAFC).
+
+- PANTALLAS Y COMPONENTES REQUERIDOS:
+  1. Navbar Superior: Título "FlowSOP AI", insignia en lavanda "PMV Operativo | Donnatty Durán" y botón rápido para cargar datos demo.
+  2. Formulario Guiado:
+     - Botón "Cargar Caso Demo (1-Click)" que prellene un caso real (ej. "Onboarding de Clientes", responsable, disparador, 4 pasos secuenciales y checklist).
+     - Campos estructurados: Título, Departamento, Responsable, Supervisor, Disparador, Pasos dinámicos (añadir/eliminar) y Checklist.
+     - Botón de envío morado: "Generar Manual, Flujograma y Activar Agente".
+  3. Panel de Entregables (Con 3 Pestañas):
+     - TAB 1 (Manual SOP): Vista de documento formal con código, versión, pasos numerados y botón funcional `window.print()` optimizado con clase `@media print` para ocultar la interfaz.
+     - TAB 2 (Flujograma Mermaid): Componente React que use `mermaid.render()` dentro de un `useEffect` para dibujar el diagrama de flujo de forma reactiva con los pasos creados, incluyendo opción de copiar el código Mermaid.
+     - TAB 3 (Agente Asistente): Chat interactivo simulado con chips de preguntas predefinidas ("¿Quién es el responsable?", "¿Cuál es el primer paso?", "¿Qué requisitos tiene el checklist?") y un motor contextual que responda con la información cargada en el formulario.
+  4. Footer Corporativo:
+     - Texto: "Solución de optimización y gobernanza de procesos diseñada por Donnatty Durán | Reto Migrantes Libres".
+     - Enlace mailto a donnattyd@gmail.com.
+
+---
+
+### EJECUCIÓN OBLIGATORIA FINAL:
+Instala las dependencias y corre inmediatamente el comando `npm run build` en la terminal para generar la carpeta `/dist`. Confirma que el archivo `/dist/index.html` exista y esté listo para sincronizar con GitHub y desplegar en Netlify.
