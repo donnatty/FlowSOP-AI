@@ -4,10 +4,6 @@ modules = ["nodejs-24"]
 router = "application"
 deploymentTarget = "autoscale"
 
-[deployment.postBuild]
-args = ["pnpm", "store", "prune"]
-env = { "CI" = "true" }
-
 [workflows]
 runButton = "Project"
 
@@ -31,14 +27,6 @@ waitForPort = 5173
 
 [workflows.workflow.metadata]
 outputType = "webview"
-
-[agent]
-stack = "PNPM_WORKSPACE"
-expertMode = true
-
-[postMerge]
-path = "scripts/post-merge.sh"
-timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
