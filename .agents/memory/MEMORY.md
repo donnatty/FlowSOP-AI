@@ -1,0 +1,1 @@
+- [Switching from pnpm to npm](npm-after-pnpm.md) — clear stale pnpm install state and keep lockfile registry URLs portable when building a standalone npm app.
